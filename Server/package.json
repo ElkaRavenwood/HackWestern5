@@ -2,7 +2,7 @@
   "name": "hackwest",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "dependencies": {
     "express": "^4.16.4",
     "mysql": "^2.16.0"
