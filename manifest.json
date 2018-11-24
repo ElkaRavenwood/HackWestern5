@@ -1,0 +1,19 @@
+// NOTE TO STUDENT: You should NOT modify this file unless instructed by the
+// course staff.
+{
+  "name": "Spell it out",
+  "version": "1.0",
+  "description": "Creates a list of expanded acronyms",
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["userToArray.js"]
+    }
+  ],
+  "icons": {
+    "16": "random.png",
+    "48": "random.png",
+    "128": "random.png"
+  },
+  "manifest_version": 2
+}
