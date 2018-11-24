@@ -1,4 +1,4 @@
-const words = new Set();
+const words = new Set(); // List of words
 
 // Collects all words in a web page
 function userToArray (node) {
@@ -15,11 +15,37 @@ function userToArray (node) {
 			// Makes array of words in text (ie if splits it)
 			let inNode = node.textContent.split(' ');
 
-			// Gets rid of whitespace, adds to set
+			// Runs through loop
 			for (let i = 0; i < inNode.length; i ++) {
+				
+				// Gets rid of whitespace
 				inNode[i].trim();
-				words.add(inNode[i]);
-				console.log(inNode[i]);
+				
+				// Removes of new line character
+				inNode[i] = inNode[i].replace(/^\s+|\s+$/g, '');
+				
+				// Makes array of acceptable characters in word
+				let found = inNode[i].match(/[a-zA-Z.]/g);
+				
+				// Makes temporary variable
+				let tempWord = "";
+				
+				// If there is 1+ acceptable character
+				if (found != undefined){
+				
+					// Adds it to the temp variable
+					for (let j = 0; j < found.length;  j++) {
+						tempWord += found[j];
+					}
+				}
+				
+				// If the temp variable exists
+				if (tempWord != "") {
+				
+					// Adds to word set
+					words.add(tempWord);
+				}
+				
 			}
 
 		}
@@ -33,6 +59,5 @@ function userToArray (node) {
 		}
 	}
 }
-
 
 userToArray(document.body);
