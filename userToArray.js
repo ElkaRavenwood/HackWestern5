@@ -26,7 +26,7 @@ function userToArray (node) {
 				inNode[i] = inNode[i].replace(/^\s+|\s+$/g, '');
 				
 				// Makes array of acceptable characters in word
-				let found = inNode[i].match(/[a-zA-Z.]/g);
+				let found = inNode[i].match(/[a-zA-Z]/g);
 				
 				// Makes temporary variable
 				let tempWord = "";
@@ -100,10 +100,11 @@ checkAcr(Array.from(words));
 let div = document.createElement("div");
 div.id = "defList";
 div.style.paddingLeft = "20px";
-div.style.maxWidth = "20%";
+div.style.width = "20%";
 div.style.height = screen.height;
 div.style.overflowX = "scroll";
 div.style.overflowY = "scroll";
+div.style.paddingRight = "20px";
 div.style.backgroundColor = "#f5fffa";
 div.style.fontFamily = document.body.style.fontFamily;
 div.style.fontSize = document.body.style.fontSize;
