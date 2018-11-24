@@ -94,16 +94,13 @@ userToArray(document.body);
 // Gets acronyms
 checkAcr(Array.from(words));
 
-let divContain = document.createElement("div");
-divContain.style.position = "fixed";
-
 // Creates div element, sets style
 let div = document.createElement("div");
+div.id = "defList";
 div.style.paddingLeft = "20px";
+div.style.maxWidth = "20%";
 div.style.height = screen.height;
-div.style.width = "20%";
-div.style.overflowY = "scroll";
-div.style.overflowX = "scroll";
+div.style.overflow = "scroll";
 div.style.backgroundColor = "#f5fffa";
 div.style.fontFamily = document.body.style.fontFamily;
 div.style.fontSize = document.body.style.fontSize;
@@ -112,9 +109,19 @@ div.style.position = "-webkit-sticky";
 div.style.position = "sticky";
 div.style.top = "0px";
 div.style.opacity = "1";
-document.body.style.paddingLeft = "25%";
-document.body.style.marginTop = "-50%";
+document.body.style.display = "flex";
+document.body.style.float = "top";
 
+// Creates new body element, sets style
+let newBod = document.createElement("div");
+newBod.id = "newBod";
+newBod.style.maxWidth = "80%";
+newBod.style.paddingLeft = "20px";
+newBod.innerHTML  = document.body.innerHTML;
+document.body.innerHTML = "";
+
+document.body.insertAdjacentElement('afterBegin', div);
+document.body.insertAdjacentElement('beforeEnd', newBod);
 
 let definitions = ["asdsdsasdghubfjosvdkegbhiuvdjosclkahuisvodjiackmhgeiufosjiapkehofijsp", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda"];
 
@@ -125,11 +132,5 @@ for (let i = 0; i < definitions.length; i ++) {
 	par.appendChild(text);
 	div.appendChild(par);
 }
-
-document.body.insertAdjacentElement('beforebegin', div);
-
-
-
-
 
 console.log('end');
