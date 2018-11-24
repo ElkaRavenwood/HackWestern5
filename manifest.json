@@ -7,13 +7,18 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["userToArray.js"]
+      "run_at": "document_idle",
+      "js": ["userToArray.js"],
+      "html": ["dictionary.html"]
     }
   ],
   "icons": {
-    "16": "random.png",
-    "48": "random.png",
-    "128": "random.png"
+    "16": "Spell It Out.png",
+    "48": "Spell It Out.png",
+    "128": "Spell It Out.png"
+  },
+  "browser_action": {
+    "default_popup" : "dictionary.html"
   },
   "manifest_version": 2
 }
