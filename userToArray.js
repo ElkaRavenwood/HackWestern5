@@ -99,20 +99,17 @@ checkAcr(Array.from(words));
 // Creates div element, sets style
 let div = document.createElement("div");
 div.id = "defList";
-div.style.paddingLeft = "20px";
+div.style.padding = "20px";
 div.style.width = "20%";
 div.style.height = screen.height;
 div.style.overflowX = "scroll";
 div.style.overflowY = "scroll";
-div.style.paddingRight = "20px";
 div.style.backgroundColor = "#f5fffa";
 div.style.fontFamily = document.body.style.fontFamily;
 div.style.fontSize = document.body.style.fontSize;
 div.style.fontColor = "black";
 div.style.position = "-webkit-sticky";
 div.style.position = "sticky";
-div.style.top = "20px";
-div.style.opacity = "1";
 document.body.style.display = "flex";
 document.body.style.float = "top";
 
@@ -121,7 +118,10 @@ let newBod = document.createElement("div");
 newBod.id = "newBod";
 newBod.style.maxWidth = "80%";
 newBod.style.paddingLeft = "20px";
+newBod.style.overflowY = "scroll";
 newBod.innerHTML  = document.body.innerHTML;
+newBod.style.position = "-webkit-sticky";
+newBod.style.position = "sticky";
 document.body.innerHTML = "";
 // Inserts into document
 document.body.insertAdjacentElement('afterBegin', div);
