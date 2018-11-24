@@ -86,6 +86,10 @@ function checkAcr(webpage){
 
    }
    console.log(acrArray);
+	for(var i = 0; i < acrArray.length; i++){
+		console.log("t" + i)
+		getAcronyms(acrArray[i]);
+	}
 }
 
 // Converts user details into array
@@ -123,6 +127,7 @@ document.body.innerHTML = "";
 document.body.insertAdjacentElement('afterBegin', div);
 document.body.insertAdjacentElement('beforeEnd', newBod);
 
+/*
 let definitions = ["asdsdsasdghubfjosvdkegbhiuvdjosclkahuisvodjiackmhgeiufosjiapkehofijsp", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda"];
 
 // Creates text for button, appends to button, then page
@@ -132,5 +137,36 @@ for (let i = 0; i < definitions.length; i ++) {
 	par.appendChild(text);
 	div.appendChild(par);
 }
+*/
 
 console.log('end');
+
+function getAcronyms(acr) {
+	console.log("Test - " + acr);
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+    	//console.log(JSON.parse(this.responseText));
+    	updateAcronyms(JSON.parse(this.responseText));
+    }
+  };
+  xhttp.open("GET", "http://localhost:3000/?acr="+acr, true);
+  xhttp.send();
+}
+
+function updateAcronyms(acrDict){
+	console.log(acrDict);
+	var key = acrDict[0];
+
+	for(var i = 1; i < acrDict.length; i++){
+		if(acrDict[i] != ""){
+			let par = document.createElement("p");
+			console.log(key + " - " + acrDict[i]);
+			let text = document.createTextNode(key + " - " + acrDict[i] + "\n");
+			par.appendChild(text);
+			div.appendChild(par);
+		}
+	}
+	
+	document.body.insertAdjacentElement('beforebegin', div);
+}
