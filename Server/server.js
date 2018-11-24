@@ -17,22 +17,41 @@ var con = mysql.createConnection({
 
 con.connect();
 
-app.get('/', async function(req, res) {
-
-
-	var acr = req.query.acr;
-	var meaning = [];
-	var returnVal = {};
-	var q = 'SELECT * FROM Acr WHERE Acronym="' + acr + '"';
-	con.query(q, function(err, rows, fields) {
+/*
+var q = 'SELECT * FROM Acr WHERE Acronym="MAC"';
+con.query(q, function(err, rows, fields) {
 		if (err) throw err;
 
 		for(var i = 0; i < rows.length ; i++){
 			meaning.push(rows[i]['Full']);
+			console.log(rows[i]['Acronym'] + " - " + rows[i]['Full']);
 		}
 		returnVal[acr] = meaning;
 		//res.send(returnVal);
 		res.json(JSON.stringify(returnVal));
+	});
+*/
+
+app.get('/', async function(req, res) {
+
+
+	var acr = req.query.acr;
+	/*var meaning = [];
+	var returnVal = {};
+	*/
+	var q = 'SELECT * FROM Acr WHERE Acronym="' + acr + '"';
+	var returnVal = [];
+	returnVal.push(acr);
+	con.query(q, function(err, rows, fields) {
+		if (err) throw err;
+
+		for(var i = 0; i < rows.length ; i++){
+			//meaning.push(rows[i]['Full']);
+			returnVal.push(rows[i]['Full']);
+		}
+		//returnVal[acr] = meaning;
+		//res.send(returnVal);
+		res.json(returnVal);
 	});
 });
 
