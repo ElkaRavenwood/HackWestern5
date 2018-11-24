@@ -85,9 +85,7 @@ function checkAcr(webpage){
 
 
    }
-   console.log(acrArray);
-	for(var i = 0; i < acrArray.length; i++){
-		console.log("t" + i)
+   for(var i = 0; i < acrArray.length; i++){
 		getAcronyms(acrArray[i]);
 	}
 }
@@ -104,7 +102,8 @@ div.id = "defList";
 div.style.paddingLeft = "20px";
 div.style.maxWidth = "20%";
 div.style.height = screen.height;
-div.style.overflow = "scroll";
+div.style.overflowX = "scroll";
+div.style.overflowY = "scroll";
 div.style.backgroundColor = "#f5fffa";
 div.style.fontFamily = document.body.style.fontFamily;
 div.style.fontSize = document.body.style.fontSize;
@@ -123,21 +122,10 @@ newBod.style.maxWidth = "80%";
 newBod.style.paddingLeft = "20px";
 newBod.innerHTML  = document.body.innerHTML;
 document.body.innerHTML = "";
-
+// Inserts into document
 document.body.insertAdjacentElement('afterBegin', div);
 document.body.insertAdjacentElement('beforeEnd', newBod);
 
-/*
-let definitions = ["asdsdsasdghubfjosvdkegbhiuvdjosclkahuisvodjiackmhgeiufosjiapkehofijsp", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda", "asdasda"];
-
-// Creates text for button, appends to button, then page
-for (let i = 0; i < definitions.length; i ++) {
-	let par = document.createElement("p");
-	let text = document.createTextNode(definitions[i] + "\n");
-	par.appendChild(text);
-	div.appendChild(par);
-}
-*/
 
 console.log('end');
 
@@ -155,18 +143,15 @@ function getAcronyms(acr) {
 }
 
 function updateAcronyms(acrDict){
-	console.log(acrDict);
 	var key = acrDict[0];
 
 	for(var i = 1; i < acrDict.length; i++){
 		if(acrDict[i] != ""){
 			let par = document.createElement("p");
-			console.log(key + " - " + acrDict[i]);
 			let text = document.createTextNode(key + " - " + acrDict[i] + "\n");
 			par.appendChild(text);
 			div.appendChild(par);
 		}
 	}
 	
-	document.body.insertAdjacentElement('beforebegin', div);
 }
