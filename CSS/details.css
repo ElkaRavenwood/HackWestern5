@@ -1,0 +1,31 @@
+body {
+	width: 200px;
+	font-family: 'Proxima Nova', 'Helvetica', sans-serif;
+	text-align: center;
+	margin-bottom: 20px; 
+}
+
+#header {
+	font-weight: bold;
+	font-size: 20px;
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+#logo {
+	height: 50px;
+}
+
+#content {
+	font-size: 16px;
+	align-content: center;
+}
+
+#toSite {
+	background-color: rgb(95,158,160);
+	padding: 10px;
+	color: white;
+	border-width: 3px;
+	border-color: black;
+}
