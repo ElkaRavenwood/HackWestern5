@@ -13,9 +13,9 @@
     }
   ],
   "icons": {
-    "16": "Spell It Out.png",
-    "48": "Spell It Out.png",
-    "128": "Spell It Out.png"
+    "16": "logo.png",
+    "48": "logo.png",
+    "128": "logo.png"
   },
   "browser_action": {
     "default_popup" : "dictionary.html"
