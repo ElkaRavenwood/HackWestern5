@@ -7,9 +7,11 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
+      "exclude_matches": [
+        "http://www.spellitout.tech/"
+      ],
       "run_at": "document_idle",
-      "js": ["userToArray.js"],
-      "html": ["dictionary.html"]
+      "js": ["userToArray.js"]
     }
   ],
   "icons": {
@@ -18,7 +20,7 @@
     "128": "logo.png"
   },
   "browser_action": {
-    "default_popup" : "dictionary.html"
+    "default_popup" : "details.html"
   },
   "manifest_version": 2
 }
