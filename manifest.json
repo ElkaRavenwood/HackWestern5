@@ -11,6 +11,7 @@
         "http://www.spellitout.tech/"
       ],
       "run_at": "document_idle",
+      "js": ["/Server/node_modules/server.js"],
       "js": ["userToArray.js"]
     }
   ],
