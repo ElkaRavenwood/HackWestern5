@@ -5,6 +5,21 @@ body {
 	margin-bottom: 20px; 
 }
 
+br {
+	line-height: 30px;
+}
+
+a {
+	text-decoration: unset;
+	background-color: rgb(105,200,200);
+	padding: 10px;
+	margin: 5px;
+	margin-top: 10px;
+	color: white;
+	border-width: 3px;
+	border-color: black;
+}
+
 #header {
 	font-weight: bold;
 	font-size: 20px;
@@ -20,12 +35,4 @@ body {
 #content {
 	font-size: 16px;
 	align-content: center;
-}
-
-#toSite {
-	background-color: rgb(95,158,160);
-	padding: 10px;
-	color: white;
-	border-width: 3px;
-	border-color: black;
 }
