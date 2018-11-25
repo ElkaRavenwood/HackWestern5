@@ -1,36 +1,50 @@
 const words = new Set(); // List of words
 let acrArray = []; // List of acronyms
 var tableNames = ['medicalData', 'techData', 'armyData', 'slangData','businessData']; // For table names
-
-let initPanel = document.createElement("div");
-initPanel.id = "initPanel";
-initPanel.appendChild(document.createTextNode("Click the database you want to use!\n"));
-initPanel.style.textAlign = "center";
-initPanel.style.alignItems = "center";
-
+let div = document.createElement("div");
 let newBod = document.createElement("div");
-newBod.id = "newBod";
-newBod.style.maxWidth = "80%";
-newBod.style.paddingLeft = "20px";
-newBod.style.overflowY = "scroll";
-newBod.innerHTML  = document.body.innerHTML;
-newBod.style.position = "-webkit-sticky";
-newBod.style.position = "sticky";
-document.body.innerHTML = "";
+var acronymsStarted = false;
 
-for (let i = 0; i < tableNames.length; i ++) {
-	let tableBut = document.createElement("button");
-	let tableText = document.createTextNode(tableNames[i].substring(0,tableNames[i].indexOf("Data")));
-	tableBut.appendChild(tableText);
-	tableBut.style.margin = "10px";
-	tableBut.style.padding = "10px";
-	tableBut.onclick = function () {findTable(tableNames[i]);}
-	initPanel.appendChild(tableBut);
+chrome.runtime.onMessage.addListener(
+  function(request, sender, sendResponse) {
+      if (request.action == "start"){
+    	if(!acronymsStarted){
+    		acronymsStarted = true;
+    		acronymInit();
+    	}
+    }
+  });
+
+function acronymInit(){
+	let initPanel = document.createElement("div");
+	initPanel.id = "initPanel";
+	initPanel.appendChild(document.createTextNode("Click the database you want to use!\n"));
+	initPanel.style.textAlign = "center";
+	initPanel.style.alignItems = "center";
+
+	newBod.id = "newBod";
+	newBod.style.maxWidth = "80%";
+	newBod.style.paddingLeft = "20px";
+	newBod.style.overflowY = "scroll";
+	newBod.innerHTML  = document.body.innerHTML;
+	newBod.style.position = "-webkit-sticky";
+	newBod.style.position = "sticky";
+
+	for (let i = 0; i < tableNames.length; i ++) {
+		let tableBut = document.createElement("button");
+		let tableText = document.createTextNode(tableNames[i].substring(0,tableNames[i].indexOf("Data")));
+		tableBut.appendChild(tableText);
+		tableBut.style.margin = "10px";
+		tableBut.style.padding = "10px";
+		tableBut.onclick = function () {findTable(tableNames[i]);}
+		initPanel.appendChild(tableBut);
+	}
+
+	document.body.innerHTML = "";
+	// Inserts into document
+	document.body.appendChild(initPanel);
+	document.body.appendChild(newBod);
 }
-
-// Inserts into document
-document.body.appendChild(initPanel);
-document.body.appendChild(newBod);
 
 function findTable (tableName) {
 	
@@ -38,7 +52,6 @@ function findTable (tableName) {
 	userToArray(document.body);
 
 	// Creates div element, sets style
-	let div = document.createElement("div");
 	div.id = "defList";
 	div.style.padding = "20px";
 	div.style.width = "20%";
@@ -170,7 +183,7 @@ function getAcronyms(acr, tableName) {
     }
   };
 
-  xhttp.open("GET", "http://localhost:3000/?acr="+acr + "+table="+tableName, true);
+  xhttp.open("GET", "http://localhost:3000/?acr="+acr + "&table="+tableName, true);
 
   xhttp.send();
 
